@@ -337,9 +337,24 @@
   /* ============================================================
      HEADER / NAVBAR
      ============================================================ */
-  .site-header{
+  .site-top-wrap{
     position: sticky;
     top: 0;
+    z-index: 100;
+  }
+  .topbar{
+    overflow: hidden;
+    max-height: 60px;
+    opacity: 1;
+    transition: max-height 0.3s var(--ease), opacity 0.25s var(--ease);
+  }
+  .site-top-wrap.is-scrolled .topbar{
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .site-header{
+    position: relative;
     z-index: 100;
     background: var(--header-bg);
     backdrop-filter: blur(10px);
@@ -3175,7 +3190,8 @@
 <!-- ============================================================
      HEADER
      ============================================================ -->
-<div class="topbar">
+<div class="site-top-wrap" id="siteTopWrap">
+<div class="topbar" id="topbar">
   <div class="container topbar-inner">
     <div class="topbar-contacts">
       <a href="https://wa.me/923075253269" class="topbar-contact" target="_blank" rel="noopener" aria-label="Chat with male contact on WhatsApp +92 307 5253269">
@@ -3272,6 +3288,7 @@
     </div>
   </div>
 </header>
+</div>
 
 <!-- ============================================================
      MAIN — empty layout shell, ready for future sections
@@ -4639,12 +4656,15 @@
 
   // Sticky header compact mode on scroll
   const siteHeader = document.getElementById('siteHeader');
+  const siteTopWrap = document.getElementById('siteTopWrap');
   let lastScrollTick = false;
   function updateHeaderScrollState(){
     if (window.scrollY > 24) {
       siteHeader.classList.add('is-scrolled');
+      siteTopWrap.classList.add('is-scrolled');
     } else {
       siteHeader.classList.remove('is-scrolled');
+      siteTopWrap.classList.remove('is-scrolled');
     }
     lastScrollTick = false;
   }
