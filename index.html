@@ -318,6 +318,23 @@
   }
 
   /* ============================================================
+     SCROLL PROGRESS BAR
+     ============================================================ */
+  .scroll-progress{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-gold-dark) 0%, var(--color-gold) 50%, var(--color-gold-light) 100%);
+    z-index: 1000;
+    transition: width 0.1s linear;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .scroll-progress{ transition: none; }
+  }
+
+  /* ============================================================
      HEADER / NAVBAR
      ============================================================ */
   .site-header{
@@ -3138,6 +3155,8 @@
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
 <!-- Inline SVG defs: 8-pointed star pattern used as a background texture -->
 <svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
   <defs>
@@ -4636,6 +4655,25 @@
     }
   }, { passive: true });
   updateHeaderScrollState();
+
+  // Scroll progress bar — fills as the page is scrolled
+  const scrollProgressBar = document.getElementById('scrollProgress');
+  let progressTick = false;
+  function updateScrollProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollProgressBar.style.width = percent + '%';
+    progressTick = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!progressTick) {
+      window.requestAnimationFrame(updateScrollProgress);
+      progressTick = true;
+    }
+  }, { passive: true });
+  window.addEventListener('resize', updateScrollProgress, { passive: true });
+  updateScrollProgress();
 
   // Floating WhatsApp button toggle
   const fabBtn = document.getElementById('fabBtn');
