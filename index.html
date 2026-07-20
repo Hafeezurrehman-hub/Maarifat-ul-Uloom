@@ -305,6 +305,7 @@
   .topbar-social svg{ width: 14px; height: 14px; }
 
   @media (max-width: 700px){
+    .topbar-contacts{ display: none; }
     .topbar-label{ display: none; }
     .topbar-inner{ justify-content: center; gap: var(--sp-5); height: 34px; }
     .topbar-contact{ gap: 0; }
@@ -405,6 +406,11 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    overflow: hidden;
+    font-size: 0;
+    color: transparent;
+    text-indent: -9999px;
+    white-space: nowrap;
   }
   .brand-text{
     display: flex;
@@ -2481,7 +2487,7 @@
     gap: var(--sp-3);
     width: 100%;
     box-sizing: border-box;
-    background: #25D366;
+    background: var(--color-navy);
     color: #FFFFFF;
     font-family: var(--font-body);
     font-size: var(--fs-sm);
@@ -2495,9 +2501,9 @@
   }
   .whatsapp-btn:last-of-type{ margin-bottom: 0; }
   .whatsapp-btn:hover, .whatsapp-btn:focus-visible{
-    background: #1fb257;
+    background: var(--color-navy-light);
     transform: translateY(-2px);
-    box-shadow: 0 2px 6px rgba(37,211,102,0.2), 0 12px 26px rgba(37,211,102,0.28);
+    box-shadow: 0 2px 6px rgba(35,48,80,0.2), 0 12px 26px rgba(35,48,80,0.28);
   }
   .whatsapp-btn svg{ width: 22px; height: 22px; flex-shrink: 0; }
   .whatsapp-btn .wa-text{
@@ -2506,8 +2512,8 @@
     align-items: flex-start;
     text-align: left;
   }
-  .whatsapp-btn .wa-label{ font-size: var(--fs-sm); font-weight: 700; line-height: 1.3; color: #3B2410; }
-  .whatsapp-btn .wa-number{ font-size: var(--fs-2xs); font-weight: 600; color: #3B2410; opacity: 1; }
+  .whatsapp-btn .wa-label{ font-size: var(--fs-sm); font-weight: 700; line-height: 1.3; color: #FFFFFF; }
+  .whatsapp-btn .wa-number{ font-size: var(--fs-2xs); font-weight: 600; color: #FFFFFF; opacity: 0.85; }
 
   .contact-email{
     display: flex;
@@ -2855,8 +2861,8 @@
   }
   .footer-grid{
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr 1.15fr;
-    gap: var(--sp-7);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-7) var(--sp-6);
   }
   .footer-brand{ max-width: 320px; }
   .footer-brand .brand-badge{ background: var(--color-navy-dark); }
@@ -2970,6 +2976,7 @@
 
   .social-row{
     display: flex;
+    flex-wrap: wrap;
     gap: var(--sp-3);
     margin-top: var(--sp-5);
   }
@@ -3021,13 +3028,29 @@
 
   @media (max-width: 1000px){
     .footer-grid{ grid-template-columns: 1fr 1fr; gap: var(--sp-6) var(--sp-7); }
-    .footer-brand{ grid-column: 1 / -1; max-width: 480px; }
-  }
-  @media (max-width: 600px){
-    .footer-grid{ grid-template-columns: 1fr; gap: var(--sp-7); }
     .footer-brand{ max-width: 100%; }
-    .footer-bottom{ flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 768px){
+    .footer-grid{ grid-template-columns: 1fr 1fr; gap: var(--sp-6) var(--sp-5); }
+    .footer-brand{ max-width: 100%; text-align: center; }
+    .footer-brand-row{ justify-content: center; }
+    .footer-desc{ max-width: 100%; margin-left: auto; margin-right: auto; }
+    .social-row{ justify-content: center; }
+    .footer-nav{ text-align: center; }
+    .footer-heading{ padding-bottom: var(--sp-3); }
+    .footer-heading::after{ left: 50%; transform: translateX(-50%); }
+    .footer-links{ align-items: center; gap: var(--sp-4); }
+    .footer-links a{ font-size: var(--fs-xs); }
+    .footer-contact-col{ align-items: center; text-align: center; }
+    .whatsapp-group{ width: 100%; max-width: 100%; margin: 0 auto; }
+    .footer-email-row{ justify-content: center; }
+    .footer-bottom{ flex-direction: column; align-items: center; text-align: center; gap: var(--sp-3); padding-bottom: calc(var(--sp-5) + 76px + env(safe-area-inset-bottom, 0px)); }
+    .footer-bottom-links{ justify-content: center; }
     .social-icon{ width: 44px; height: 44px; }
+  }
+  @media (max-width: 380px){
+    .footer-grid{ grid-template-columns: 1fr; }
+    .footer-nav{ text-align: center; }
   }
 
   /* ============================================================
@@ -4457,7 +4480,35 @@
           <a href="https://www.youtube.com/@MaarifatUlUloomAcademy" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
             <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 5 12 5 12 5s-6 0-7.7.3A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9C6 19 12 19 12 19s6 0 7.7-.3a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8ZM10 15V9l5.2 3Z"/></svg>
           </a>
+          <a href="https://www.linkedin.com/company/maarifat-ul-uloom-academy/" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM3.2 8.75h3.5V21H3.2V8.75Zm6.2 0h3.35v1.68h.05c.47-.88 1.6-1.8 3.3-1.8 3.53 0 4.18 2.32 4.18 5.34V21h-3.5v-6.36c0-1.52-.03-3.47-2.12-3.47-2.12 0-2.45 1.65-2.45 3.36V21H9.4V8.75Z"/></svg>
+          </a>
+          <a href="https://pin.it/4gwbnP8Il" class="social-icon" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.05-.8-.1-2.05.02-2.94.1-.8.7-5.1.7-5.1s-.18-.36-.18-.9c0-.84.5-1.47 1.1-1.47.5 0 .77.38.77.83 0 .5-.32 1.26-.5 1.96-.13.6.3 1.08.9 1.08 1.08 0 1.9-1.14 1.9-2.78 0-1.45-1.05-2.47-2.54-2.47-1.73 0-2.74 1.3-2.74 2.63 0 .52.2 1.08.45 1.38a.18.18 0 0 1 .04.18c-.05.2-.16.6-.18.7-.03.12-.1.15-.22.1-.85-.4-1.38-1.64-1.38-2.64 0-2.15 1.56-4.13 4.5-4.13 2.36 0 4.2 1.68 4.2 3.93 0 2.34-1.48 4.23-3.53 4.23-.69 0-1.34-.36-1.56-.78l-.42 1.63c-.15.6-.57 1.34-.85 1.8A10 10 0 1 0 12 2Z"/></svg>
+          </a>
+          <a href="https://whatsapp.com/channel/0029Vb8Doae9xVJYnsMAuV2S" class="social-icon" aria-label="WhatsApp Channel" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>
+          </a>
         </div>
+      </div>
+
+      <div class="footer-contact-col">
+        <h3 class="footer-heading">Contact Details</h3>
+        <div class="whatsapp-group">
+          <a href="https://wa.me/923075253269" class="whatsapp-btn" target="_blank" rel="noopener">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>
+            <span class="wa-label"><strong>Male Team</strong><span>+92 307 5253269</span></span>
+          </a>
+          <a href="https://wa.me/923713518505" class="whatsapp-btn" target="_blank" rel="noopener">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>
+            <span class="wa-label"><strong>Female Team</strong><span>+92 371 3518505</span></span>
+          </a>
+        </div>
+        <div class="footer-email-row">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6.5 8 6 8-6"/></svg>
+          <a href="mailto:maarifatululoom@gmail.com">maarifatululoom@gmail.com</a>
+        </div>
+        <div class="footer-worldwide">🌍 Serving Students Worldwide</div>
       </div>
 
       <div class="footer-nav">
@@ -4482,25 +4533,6 @@
           <li><a href="#course-islamic-studies">Islamic Studies</a></li>
           <li><a href="#course-arabic-basics">Arabic Basics</a></li>
         </ul>
-      </div>
-
-      <div class="footer-contact-col">
-        <h3 class="footer-heading">Contact Details</h3>
-        <div class="whatsapp-group">
-          <a href="https://wa.me/923075253269" class="whatsapp-btn" target="_blank" rel="noopener">
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>
-            <span class="wa-label"><strong>Male Team</strong><span>+92 307 5253269</span></span>
-          </a>
-          <a href="https://wa.me/923713518505" class="whatsapp-btn" target="_blank" rel="noopener">
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>
-            <span class="wa-label"><strong>Female Team</strong><span>+92 371 3518505</span></span>
-          </a>
-        </div>
-        <div class="footer-email-row">
-          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6.5 8 6 8-6"/></svg>
-          <a href="mailto:maarifatululoom@gmail.com">maarifatululoom@gmail.com</a>
-        </div>
-        <div class="footer-worldwide">🌍 Serving Students Worldwide</div>
       </div>
     </div>
   </div>
