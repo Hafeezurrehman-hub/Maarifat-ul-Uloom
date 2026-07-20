@@ -1257,6 +1257,180 @@
   }
 
   /* ============================================================
+     PRICING SECTION
+     ============================================================ */
+  .pricing{
+    padding: var(--sp-9) 0;
+    background: var(--bg-page);
+    transition: background var(--dur) var(--ease);
+  }
+  .pricing-head{
+    max-width: 640px;
+    margin: 0 auto var(--sp-8);
+    text-align: center;
+  }
+  .pricing-eyebrow{
+    display: inline-block;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gold-dark);
+    margin-bottom: var(--sp-3);
+  }
+  [data-theme="dark"] .pricing-eyebrow{ color: var(--color-gold-light); }
+  .pricing-head h2{
+    font-size: clamp(1.6rem, 3.2vw, var(--fs-2xl));
+    margin: 0 0 var(--sp-4);
+  }
+  .pricing-intro{
+    font-size: var(--fs-md);
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* Desktop / tablet table */
+  .pricing-table-wrap{
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-soft);
+  }
+  .pricing-table{
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    background: var(--color-white);
+  }
+  [data-theme="dark"] .pricing-table{ background: var(--color-navy-light); }
+  .pricing-table thead th{
+    background: var(--color-navy);
+    color: var(--color-white);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    text-align: center;
+    padding: var(--sp-4) var(--sp-5);
+    letter-spacing: 0.02em;
+  }
+  [data-theme="dark"] .pricing-table thead th{ background: var(--color-navy-dark); }
+  .pricing-table thead th:first-child{ text-align: left; }
+  .pricing-table tbody td{
+    padding: var(--sp-4) var(--sp-5);
+    text-align: center;
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-soft);
+    transition: background 0.2s var(--ease);
+  }
+  .pricing-table tbody tr:last-child td{ border-bottom: none; }
+  .pricing-table tbody td:first-child{
+    text-align: left;
+    font-weight: 700;
+  }
+  .pricing-table tbody tr:nth-child(even) td{
+    background: rgba(221,206,158,0.18);
+  }
+  [data-theme="dark"] .pricing-table tbody tr:nth-child(even) td{
+    background: rgba(221,206,158,0.06);
+  }
+  .pricing-table tbody tr.is-popular td:first-child{
+    border-left: 4px solid var(--color-gold);
+    padding-left: calc(var(--sp-5) - 4px);
+  }
+  .pricing-course-cell{
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    flex-wrap: wrap;
+  }
+  .pricing-badge{
+    display: inline-block;
+    background: var(--color-gold);
+    color: var(--color-white);
+    font-size: var(--fs-2xs);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+
+  /* Mobile stacked cards (hidden until small screens) */
+  .pricing-cards{ display: none; }
+
+  .pricing-card{
+    position: relative;
+    background: var(--color-white);
+    border: 1px solid var(--border-soft);
+    border-top: 4px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    padding: var(--sp-6);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  [data-theme="dark"] .pricing-card{
+    background: var(--color-navy-light);
+    border-color: rgba(221,206,158,0.15);
+  }
+  .pricing-card:hover{
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
+  [data-theme="dark"] .pricing-card:hover{ box-shadow: var(--shadow-dark-md); }
+  .pricing-card h3{
+    font-size: var(--fs-md);
+    margin: 0 0 var(--sp-4);
+  }
+  .pricing-card-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    padding: var(--sp-2) 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: var(--fs-sm);
+  }
+  .pricing-card-row:last-child{ border-bottom: none; }
+  .pricing-card-row-label{
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .pricing-card-row-value{
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  .pricing-note{
+    text-align: center;
+    font-style: italic;
+    font-size: var(--fs-sm);
+    color: var(--color-gold-dark);
+    margin: var(--sp-6) 0 0;
+  }
+  [data-theme="dark"] .pricing-note{ color: var(--color-gold-light); }
+
+  .pricing-cta{
+    text-align: center;
+    margin-top: var(--sp-7);
+  }
+
+  @media (max-width: 800px){
+    .pricing-table-wrap{ display: none; }
+    .pricing-cards{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-5);
+    }
+  }
+  @media (max-width: 600px){
+    .pricing{ padding: var(--sp-8) 0; }
+    .pricing-head{ margin-bottom: var(--sp-6); }
+    .pricing-cards{ grid-template-columns: 1fr; }
+  }
+
+  /* ============================================================
      TEACHERS SECTION
      ============================================================ */
   .teachers{
@@ -3313,6 +3487,208 @@
           </div>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="pricing-head" data-animate="fade-up">
+        <span class="pricing-eyebrow">Pricing</span>
+        <h2>Course Fees</h2>
+        <p class="pricing-intro">Simple, transparent pricing for every course.</p>
+      </div>
+
+      <div class="pricing-table-wrap" data-animate="fade-up">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th scope="col">Course</th>
+              <th scope="col">Classes/Week</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Monthly Fee (PKR)</th>
+              <th scope="col">Monthly Fee (USD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Noorani Qaida</td>
+              <td>5</td>
+              <td>30 min</td>
+              <td>PKR 8,000</td>
+              <td>$35</td>
+            </tr>
+            <tr>
+              <td>Quran Reading</td>
+              <td>5</td>
+              <td>30 min</td>
+              <td>PKR 9,000</td>
+              <td>$40</td>
+            </tr>
+            <tr>
+              <td>Quran with Tajweed</td>
+              <td>5</td>
+              <td>40 min</td>
+              <td>PKR 10,000</td>
+              <td>$45</td>
+            </tr>
+            <tr class="is-popular">
+              <td>
+                <span class="pricing-course-cell">
+                  Hifz-ul-Quran
+                  <span class="pricing-badge">Most Popular</span>
+                </span>
+              </td>
+              <td>5</td>
+              <td>60 min</td>
+              <td>PKR 15,000</td>
+              <td>$65</td>
+            </tr>
+            <tr>
+              <td>Islamic Studies</td>
+              <td>2</td>
+              <td>45 min</td>
+              <td>PKR 5,000</td>
+              <td>$25</td>
+            </tr>
+            <tr>
+              <td>Basic Arabic</td>
+              <td>3</td>
+              <td>45 min</td>
+              <td>PKR 7,000</td>
+              <td>$30</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pricing-cards">
+        <article class="pricing-card" data-animate="fade-up">
+          <h3>Noorani Qaida</h3>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Classes/Week</span>
+            <span class="pricing-card-row-value">5</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Duration</span>
+            <span class="pricing-card-row-value">30 min</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (PKR)</span>
+            <span class="pricing-card-row-value">PKR 8,000</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (USD)</span>
+            <span class="pricing-card-row-value">$35</span>
+          </div>
+        </article>
+
+        <article class="pricing-card" data-animate="fade-up">
+          <h3>Quran Reading</h3>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Classes/Week</span>
+            <span class="pricing-card-row-value">5</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Duration</span>
+            <span class="pricing-card-row-value">30 min</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (PKR)</span>
+            <span class="pricing-card-row-value">PKR 9,000</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (USD)</span>
+            <span class="pricing-card-row-value">$40</span>
+          </div>
+        </article>
+
+        <article class="pricing-card" data-animate="fade-up">
+          <h3>Quran with Tajweed</h3>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Classes/Week</span>
+            <span class="pricing-card-row-value">5</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Duration</span>
+            <span class="pricing-card-row-value">40 min</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (PKR)</span>
+            <span class="pricing-card-row-value">PKR 10,000</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (USD)</span>
+            <span class="pricing-card-row-value">$45</span>
+          </div>
+        </article>
+
+        <article class="pricing-card" data-animate="fade-up">
+          <span class="course-ribbon">Popular</span>
+          <h3>Hifz-ul-Quran</h3>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Classes/Week</span>
+            <span class="pricing-card-row-value">5</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Duration</span>
+            <span class="pricing-card-row-value">60 min</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (PKR)</span>
+            <span class="pricing-card-row-value">PKR 15,000</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (USD)</span>
+            <span class="pricing-card-row-value">$65</span>
+          </div>
+        </article>
+
+        <article class="pricing-card" data-animate="fade-up">
+          <h3>Islamic Studies</h3>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Classes/Week</span>
+            <span class="pricing-card-row-value">2</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Duration</span>
+            <span class="pricing-card-row-value">45 min</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (PKR)</span>
+            <span class="pricing-card-row-value">PKR 5,000</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (USD)</span>
+            <span class="pricing-card-row-value">$25</span>
+          </div>
+        </article>
+
+        <article class="pricing-card" data-animate="fade-up">
+          <h3>Basic Arabic</h3>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Classes/Week</span>
+            <span class="pricing-card-row-value">3</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Duration</span>
+            <span class="pricing-card-row-value">45 min</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (PKR)</span>
+            <span class="pricing-card-row-value">PKR 7,000</span>
+          </div>
+          <div class="pricing-card-row">
+            <span class="pricing-card-row-label">Monthly Fee (USD)</span>
+            <span class="pricing-card-row-value">$30</span>
+          </div>
+        </article>
+      </div>
+
+      <p class="pricing-note"><em>Fees may vary depending on class duration and country. Please contact us for the latest fee details.</em></p>
+
+      <div class="pricing-cta">
+        <a href="#admission" class="btn-cta">Book Free Trial</a>
       </div>
     </div>
   </section>
