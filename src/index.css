@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Amiri:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  /* FIX: stops any stray element from pushing the page wider than the
+     screen on mobile, which was shifting centered containers (like the
+     Contact form) off to the right and cutting them off. */
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  @apply font-body text-navy-900 bg-cream antialiased transition-colors duration-300;
+  /* FIX: same horizontal-overflow safety net as html above */
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.dark body {
+  @apply text-cream bg-navy-900;
+}
+
+h1, h2, h3, h4 {
+  @apply font-heading;
+}
+
+::selection {
+  @apply bg-gold-200 text-navy-900;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #C9973B;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ---------- 3D / Glassmorphism utilities ---------- */
+
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dark .glass {
+  background: rgba(20, 28, 48, 0.92);
+  border: 1px solid rgba(216, 190, 138, 0.28);
+}
+
+.glass-dark {
+  background: rgba(16, 33, 59, 0.45);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.depth-layer {
+  transform: translateZ(0);
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group [style*="perspective"],
+  [style*="rotateX"],
+  [style*="rotateY"] {
+    transform: none !important;
+  }
+}
+
+@keyframes ripple {
+  from {
+    opacity: 0.5;
+    width: 10px;
+    height: 10px;
+  }
+  to {
+    opacity: 0;
+    width: 400px;
+    height: 400px;
+  }
+}

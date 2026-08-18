@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hafeezurrehman-hub.github.io/Maarifat-ul-Uloom/sitemap.xml
